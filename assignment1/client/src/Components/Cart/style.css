@@ -1,0 +1,23 @@
+.wrapper {
+    padding: 0 120px;
+    background-color: #fff;
+}
+
+.content {
+    min-height: 100vh;
+    padding-top: 44px;
+    display: flex;
+    flex-direction: column;
+}
+
+@media only screen and (max-width: 720px)  {
+    .wrapper {
+        padding: 0 64px;
+    }
+}
+
+@media only screen and (max-width: 420px)  {
+    .wrapper {
+        padding: 0 24px;
+    }
+}

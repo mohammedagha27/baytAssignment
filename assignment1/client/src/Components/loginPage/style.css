@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-light-gray: rgba(238, 238, 238, 1);
+  --bg-dark-gray: rgba(206, 206, 206, 1);
+  --icon-color: rgba(86, 86, 86, 1);
+  --danger-color: rgba(219, 49, 49, 1);
+  --success-color: #14a44d;
+  --button: #09c;
+}
+
+.signup-popup,
+.login-popup {
+  font-family: 'Roboto', sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* display: none; */
+}
+.signup-popup.active,
+.login-popup.active {
+  display: flex;
+}
+.signup-popup .signup-container,
+.login-popup .login-container {
+  position: relative;
+  width: 850px;
+  height: 650px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0px -1px 11px 0px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0px -1px 11px 0px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0px -1px 11px 0px rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  align-items: center;
+  overflow: hidden;
+}
+.signup-popup .signup-container .signup-img,
+.login-popup .login-container .login-img {
+  width: 300px;
+  height: 100%;
+  background: url('https://images.pexels.com/photos/5632382/pexels-photo-5632382.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+  background-size: cover;
+  background-position: center;
+}
+.signup-popup .signup-container .signup-content,
+.login-popup .login-container .login-content {
+  height: 100%;
+  /* padding: 24px; */
+  margin-left: 4rem;
+  display: flex;
+  width: 280px;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  flex-direction: column;
+  position: relative;
+}
+.signup-popup .signup-container .signup-content .signup-header h3,
+.login-popup .login-container .login-content .login-header h3 {
+  font-weight: 500;
+}
+.signup-popup .signup-container .signup-content .signup-header p,
+.login-popup .login-container .login-content .login-header p {
+  margin-top: 1rem;
+  font-size: 12px;
+  padding-right: 20px;
+}
+.signup-popup .signup-container .signup-content .signup-sochial,
+.login-popup .login-container .login-content .login-sochial {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+}
+.signup-popup .signup-container .signup-content .signup-sochial svg,
+.login-popup .login-container .login-content .login-sochial svg {
+  width: 18px;
+  position: absolute;
+  left: 7px;
+}
+.signup-popup .signup-container .signup-content .signup-sochial a,
+.login-popup .login-container .login-content .login-sochial a {
+  width: 100%;
+  height: 42px;
+  position: relative;
+  border-radius: 100px;
+  border: 2px solid #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 7px;
+  text-decoration: none;
+  color: #333;
+  transition: all 0.2s ease;
+}
+
+.signup-popup .signup-container .signup-content .signup-sochial a:hover,
+.login-popup .login-container .login-content .login-sochial a:hover {
+  background-color: #338fff11;
+}
+.signup-popup .signup-container .signup-content .divider,
+.login-popup .login-container .login-content .divider {
+  width: 100%;
+  border-bottom: 2px solid #eee;
+  position: relative;
+}
+.signup-popup .signup-container .signup-content .divider span,
+.login-popup .login-container .login-content .divider span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 5px;
+  color: #333;
+  font-weight: 500;
+}
+.login-body,
+.signup-body {
+  width: 100%;
+}
+.signup-popup .signup-container .signup-content .signup-body form input,
+.login-popup .login-container .login-content .login-body form input {
+  width: 100%;
+  height: 48px;
+  background-color: #fcfcfb;
+  outline: none;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 0 10px;
+  margin: 1.2rem 0 5px;
+}
+.signup-popup .signup-container .signup-content .signup-body form input:focus,
+.login-popup .login-container .login-content .login-body form input:focus {
+  border-color: var(--button);
+}
+.signup-popup .signup-container .signup-content .signup-body form button,
+.login-popup .login-container .login-content .login-body form button {
+  width: 100%;
+  height: 42px;
+  background-color: var(--button);
+  border: none;
+  color: #fff;
+  outline: none;
+  border-radius: 100px;
+  padding: 0 10px;
+  margin-top: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.signup-popup .signup-container .signup-content .login-check,
+.login-popup .login-container .login-content .login-check {
+  font-size: 12px;
+}
+.signup-popup .signup-container .signup-content .login-check a,
+.login-popup .login-container .login-content .login-check a {
+  font-size: 14px;
+  text-decoration: none;
+  color: var(--button);
+  font-weight: 600;
+}
+
+.signup-close,
+.login-close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  color: var(--span);
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 999999;
+}
+.inputError {
+  border-color: red !important;
+  color: red !important;
+}
+.inputError::placeholder {
+  color: red !important;
+}
+.errorLabel {
+  color: red !important;
+  font-size: 13px;
+}
