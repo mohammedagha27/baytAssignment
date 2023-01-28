@@ -7,7 +7,7 @@ import TextInput from '@/Components/TextInput';
 import { Head, Link, useForm } from '@inertiajs/react';
 
 export default function Register() {
-    const { data, setData, post, processing, errors, reset,setError } = useForm({
+    const { data, setData, post, processing, errors, reset, setError } = useForm({
         'email': '',
         'password': '',
         'password_confirmation': '',
@@ -18,7 +18,6 @@ export default function Register() {
         'birthdate': '',
         'gender': '',
         'customer_type': '',
-
     });
 
     useEffect(() => {
@@ -30,9 +29,17 @@ export default function Register() {
     const onHandleChange = (event) => {
         setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
         if (event.target.value.length === 0) {
-            setError(event.target.name,event.target.name + ' should not be empty')
+            setError(event.target.name, event.target.name + ' should not be empty')
         } else {
-            setError(event.target.name,'')
+            setError(event.target.name, '')
+            if (event.target.name === 'email') {
+                let match = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(event.target.value)
+                if (!match) {
+                    setError('email', 'must be a valid email')
+                } else {
+                    setError('email', '')
+                }
+            }
         }
         if (event.target.name === 'birthdate') {
             let dob = document.querySelector("#birthdate").value
@@ -42,19 +49,30 @@ export default function Register() {
             let diff = currentDate - inputDate;
             // Convert milliseconds to years
             let diffInYears = diff / (1000 * 60 * 60 * 24 * 365);
-            if(diffInYears < 18){
-                setError('birthdate','You have to be older that 18 years old')
+            if (diffInYears < 18) {
+                setError('birthdate', 'You have to be older that 18 years old')
             }
         }
-        if (event.target.name === 'password' || (event.target.name === 'password_confirmation')) {
-            if(event.target.value.length <8){
-                setError(event.target.name,'password must be greater the 8 characters')
-            }else{
-                if (document.querySelector("#password").value !== document.querySelector("#password_confirmation").value) {
-                    setError('password','password and password confirmation must be equal')
-                } else {
-                    setError('password','')
-                }
+        if (event.target.name === 'password') {
+            let match = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(event.target.value)
+            if (!match) {
+                setError('password', `password must be at least 8 characters long and contains at least 1 uppercase letter, 1 number, and 1 special
+                character`)
+            } else {
+                setError('password', '')
+            }
+            if (document.querySelector("#password").value !== document.querySelector("#password_confirmation").value &&
+                document.querySelector("#password_confirmation").value.length > 0) {
+                setError('password_confirmation', 'password and password confirmation must be equal')
+            } else {
+                setError('password_confirmation', '')
+            }
+        }
+        if ((event.target.name === 'password_confirmation')) {
+            if (document.querySelector("#password").value !== document.querySelector("#password_confirmation").value) {
+                setError('password_confirmation', 'password and password confirmation must be equal')
+            } else {
+                setError('password_confirmation', '')
             }
         }
     };
@@ -113,7 +131,7 @@ export default function Register() {
                         id="email"
                         type="text"
                         name="email"
-                        error={errors.email_name}
+                        error={errors.email}
                         value={data.email}
                         className="mt-1 block w-full"
                         autoComplete="email"
