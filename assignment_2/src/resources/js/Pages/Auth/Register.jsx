@@ -78,7 +78,8 @@ export default function Register() {
                         name="first_name"
                         type="text"
                         value={data.first_name}
-                        className="mt-1 block w-full"
+                        className={"mt-1 block w-full"}
+                        error={errors.first_name}
                         autoComplete="first_name"
                         isFocused={true}
                         handleChange={onHandleChange}
@@ -97,6 +98,7 @@ export default function Register() {
                         name="last_name"
                         value={data.last_name}
                         className="mt-1 block w-full"
+                        error={errors.last_name}
                         autoComplete="last_name"
                         handleChange={onHandleChange}
                         required
@@ -111,6 +113,7 @@ export default function Register() {
                         id="email"
                         type="text"
                         name="email"
+                        error={errors.email_name}
                         value={data.email}
                         className="mt-1 block w-full"
                         autoComplete="email"
@@ -129,6 +132,7 @@ export default function Register() {
                         type="text"
                         name="phone_number"
                         value={data.phone_number}
+                        error={errors.phone_number}
                         className="mt-1 block w-full"
                         autoComplete="phone_number"
                         handleChange={onHandleChange}
@@ -145,6 +149,7 @@ export default function Register() {
                         type="text"
                         name="address"
                         value={data.address}
+                        error={errors.address}
                         className="mt-1 block w-full"
                         autoComplete="address"
                         handleChange={onHandleChange}
@@ -161,6 +166,7 @@ export default function Register() {
                         type="date"
                         name="birthdate"
                         value={data.birthdate}
+                        error={errors.birthdate}
                         className="mt-1 block w-full"
                         autoComplete="birthdate"
                         handleChange={onHandleChange}
@@ -247,6 +253,7 @@ export default function Register() {
                             type="text"
                             name="business_name"
                             value={data.business_name}
+                            error={errors.business_name}
                             className="mt-1 block w-full"
                             autoComplete="new-business_name"
                             handleChange={onHandleChange}
@@ -261,6 +268,7 @@ export default function Register() {
                             type="text"
                             name="business_address"
                             value={data.business_address}
+                            error={errors.business_address}
                             className="mt-1 block w-full"
                             autoComplete="new-business_address"
                             handleChange={onHandleChange}
@@ -277,6 +285,7 @@ export default function Register() {
                         type="password"
                         name="password"
                         value={data.password}
+                        error={errors.password}
                         className="mt-1 block w-full"
                         autoComplete="new-password"
                         handleChange={onHandleChange}
@@ -294,6 +303,7 @@ export default function Register() {
                         type="password"
                         name="password_confirmation"
                         value={data.password_confirmation}
+                        error={errors.password_confirmation}
                         className="mt-1 block w-full"
                         handleChange={onHandleChange}
                         required
